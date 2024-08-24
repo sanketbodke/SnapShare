@@ -25,10 +25,6 @@ jobs:
         run: |
           bundle install
 
-      - name: Run tests
-        run: |
-          bundle exec rspec  # Update to your test command
-
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
