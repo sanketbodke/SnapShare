@@ -8,6 +8,11 @@ Rails.application.routes.draw do
         sessions: 'api/v1/sessions'
       }
 
+      resources :users, only: [] do
+        member do
+          put :update_password
+        end
+      end
       resources :posts, only: [:create]
     end
   end
