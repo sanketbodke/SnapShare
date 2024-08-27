@@ -14,10 +14,6 @@ module Api
           render json: { status: 'error', message: 'Invalid email or password.' }, status: :unauthorized
         end
       end
-
-      # def destroy
-      #   render json: { status: 'success', message: 'Logged out successfully.' }, status: :ok
-      # end
     end
   end
 end
