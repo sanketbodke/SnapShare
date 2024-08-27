@@ -75,6 +75,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    acts_as_votable (0.14.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
@@ -233,6 +234,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts_as_votable
   bootsnap
   debug
   devise

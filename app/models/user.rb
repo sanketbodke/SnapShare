@@ -2,6 +2,8 @@
 
 class User < ApplicationRecord
   has_many :posts
+  acts_as_voter
+  acts_as_votable
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
