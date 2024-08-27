@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       resources :users, only: [] do
         member do
           put :update_password
+          put 'follow', to: 'users#follow'
+          put 'unfollow', to: 'users#unfollow'
+          get 'followers', to: 'users#followers'
+          get 'following', to: 'users#following'
         end
       end
       resources :posts, only: [:create]
