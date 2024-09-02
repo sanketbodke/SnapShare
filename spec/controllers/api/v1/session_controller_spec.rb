@@ -35,4 +35,3 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
     end
   end
 end
-

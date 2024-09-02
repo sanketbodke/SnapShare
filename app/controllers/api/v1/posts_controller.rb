@@ -3,6 +3,7 @@
 module Api
   module V1
     class PostsController < Api::V1::BaseController
+      before_action :set_post, only: %i[like dislike]
       def create
         if @current_user
           post = @current_user.posts.build(post_params)
@@ -16,7 +17,27 @@ module Api
         end
       end
 
+      def like
+        if @post.liked_by @current_user
+          render json: { status: 'success', message: 'Post liked successfully.', post: @post }, status: :ok
+        else
+          render json: { status: 'error', message: 'Unable to like post.' }, status: :unprocessable_entity
+        end
+      end
+
+      def dislike
+        if @post.disliked_by @current_user
+          render json: { status: 'success', message: 'Post disliked successfully.', post: @post }, status: :ok
+        else
+          render json: { status: 'error', message: 'Unable to dislike post.' }, status: :unprocessable_entity
+        end
+      end
+
       private
+
+      def set_post
+        @post = Post.find(params[:id])
+      end
 
       def post_params
         params.require(:post).permit(:title, :description, :image)

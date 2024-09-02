@@ -4,6 +4,7 @@ module Api
   module V1
     class UsersController < BaseController
       before_action :authenticate_request
+      before_action :set_user, only: %i[liked_posts]
 
       def update_password
         user = User.find_by(id: params[:id])
@@ -53,6 +54,37 @@ module Api
       def following
         following = @current_user.find_voted_items
         render json: following, status: :ok
+      end
+
+      def liked_posts
+        # votes is an association provided by the acts_as_votable gem,
+        # This method filters the votes to include only “up” votes (likes).
+        # This method filters the votes to include only those associated with the Post model.
+        # pluck(:votable_id) extracts the IDs of the votable items (in this case, Post IDs) from the votes.
+        #  Post.where => This query fetches all Post records
+        # whose IDs match the array of IDs obtained from the previous step
+        liked_posts = Post.where(id: @user.votes.up.for_type(Post).pluck(:votable_id))
+        liked_posts_count = liked_posts.count
+
+        if liked_posts.present?
+          render json: {
+            status: 'success',
+            liked_posts:,
+            liked_posts_count:
+          }, status: :ok
+        else
+          render json: {
+            status: 'success',
+            message: 'No liked posts found.',
+            liked_posts_count: 0
+          }, status: :ok
+        end
+      end
+
+      private
+
+      def set_user
+        @user = User.find(params[:id])
       end
     end
   end

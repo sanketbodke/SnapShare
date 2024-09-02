@@ -15,9 +15,15 @@ Rails.application.routes.draw do
           put 'unfollow', to: 'users#unfollow'
           get 'followers', to: 'users#followers'
           get 'following', to: 'users#following'
+          get 'liked_posts'
         end
       end
-      resources :posts, only: [:create]
+      resources :posts, only: [:create] do
+        member do
+          put 'like'
+          put 'dislike'
+        end
+      end
     end
   end
 end
