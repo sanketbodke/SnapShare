@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :email, presence: true
+  validates :phone_number, length: { maximum: 10, too_long: 'must be ten digit' }
 end
