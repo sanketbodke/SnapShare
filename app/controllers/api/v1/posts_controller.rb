@@ -3,7 +3,8 @@
 module Api
   module V1
     class PostsController < Api::V1::BaseController
-      before_action :set_post, only: %i[like dislike]
+      before_action :set_post, only: %i[like dislike save unsave]
+
       def create
         if @current_user
           post = @current_user.posts.build(post_params)
@@ -30,6 +31,22 @@ module Api
           render json: { status: 'success', message: 'Post disliked successfully.', post: @post }, status: :ok
         else
           render json: { status: 'error', message: 'Unable to dislike post.' }, status: :unprocessable_entity
+        end
+      end
+
+      def save
+        if @post.liked_by @current_user, vote_scope: 'save'
+          render json: { status: 'success', message: 'Post saved successfully.', post: @post }, status: :ok
+        else
+          render json: { status: 'error', message: 'Unable to save post.' }, status: :unprocessable_entity
+        end
+      end
+
+      def unsave
+        if @post.unliked_by @current_user, vote_scope: 'save'
+          render json: { status: 'success', message: 'Post unsaved successfully.', post: @post }, status: :ok
+        else
+          render json: { status: 'error', message: 'Unable to unsave post.' }, status: :unprocessable_entity
         end
       end
 

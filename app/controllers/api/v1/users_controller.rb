@@ -4,7 +4,7 @@ module Api
   module V1
     class UsersController < Api::V1::BaseController
       before_action :authenticate_request
-      before_action :set_user, only: %i[liked_posts]
+      before_action :set_user, only: %i[liked_posts saved_posts]
 
       def update_password
         otp_code = generate_otp_code
@@ -74,6 +74,17 @@ module Api
           status: 'success',
           liked_posts: liked_posts_info[:liked_posts],
           liked_posts_count: liked_posts_info[:liked_posts_count]
+        }, status: :ok
+      end
+
+      def saved_posts
+        user_service = UserService.new(@user)
+        saved_posts_info = user_service.saved_posts
+
+        render json: {
+          status: 'success',
+          liked_posts: saved_posts_info[:saved_posts],
+          liked_posts_count: saved_posts_info[:saved_posts_count]
         }, status: :ok
       end
 

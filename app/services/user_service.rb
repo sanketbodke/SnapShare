@@ -53,4 +53,15 @@ class UserService
       { liked_posts: [], liked_posts_count: 0 }
     end
   end
+
+  def saved_posts
+    saved_posts = Post.where(id: @user.votes.up.for_type(Post).where(vote_scope: 'save').pluck(:votable_id))
+    saved_posts_count = saved_posts.count
+
+    if saved_posts.present?
+      { saved_posts:, saved_posts_count: }
+    else
+      { saved_posts: [], saved_posts_count: 0 }
+    end
+  end
 end
