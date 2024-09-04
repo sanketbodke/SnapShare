@@ -13,6 +13,7 @@ gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'acts_as_votable'
 gem 'devise'
+gem 'dotenv-rails', groups: %i[development test]
 gem 'jwt'
 
 gem 'puma', '>= 5.0'
