@@ -96,6 +96,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    dotenv (3.0.2)
+    dotenv-rails (3.0.2)
+      dotenv (= 3.0.2)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     globalid (1.2.1)
@@ -238,6 +242,7 @@ DEPENDENCIES
   bootsnap
   debug
   devise
+  dotenv-rails
   jwt
   pg (~> 1.1)
   puma (>= 5.0)

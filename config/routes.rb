@@ -17,12 +17,15 @@ Rails.application.routes.draw do
           get 'followers', to: 'users#followers'
           get 'following', to: 'users#following'
           get 'liked_posts'
+          get 'saved_posts'
         end
       end
       resources :posts, only: [:create] do
         member do
           put 'like'
           put 'dislike'
+          put 'save'
+          put 'unsave'
         end
       end
     end
