@@ -8,7 +8,7 @@ module Api
       private
 
       def authenticate_request
-        token = request.headers['Authorization']&.split(' ')&.last
+        token = request.headers['Authorization']&.split&.last
 
         return render json: { error: 'Not Authorized' }, status: :unauthorized if token.nil?
 

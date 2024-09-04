@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :users, only: [] do
         member do
           put :update_password
+          put :verify_otp
           put 'follow', to: 'users#follow'
           put 'unfollow', to: 'users#unfollow'
           get 'followers', to: 'users#followers'
