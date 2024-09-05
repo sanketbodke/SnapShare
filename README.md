@@ -9,7 +9,7 @@ To set up the project locally, follow these steps:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/sanketbodke/instagram_clone.git
+   https://github.com/sanketbodke/SnapShare.git
    ```
 
    ```bash
