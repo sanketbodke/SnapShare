@@ -64,4 +64,8 @@ class UserService
       { saved_posts: [], saved_posts_count: 0 }
     end
   end
+
+  def commented_posts
+    Post.joins(:comments).where(comments: { user_id: @user.id }).distinct
+  end
 end

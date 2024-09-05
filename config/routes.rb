@@ -18,6 +18,7 @@ Rails.application.routes.draw do
           get 'following', to: 'users#following'
           get 'liked_posts'
           get 'saved_posts'
+          get 'comment_posts'
         end
       end
       resources :posts, only: [:create] do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
           put 'dislike'
           put 'save'
           put 'unsave'
+          post 'add_comment'
         end
       end
     end
