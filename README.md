@@ -1,4 +1,4 @@
-# Instagram Clone
+# SnapShare
 
 This is a Ruby on Rails API-based project that provides endpoints for user authentication, post management, and user interactions such as follow, unfollow, likes, dislikes, saves, and comments.
 
