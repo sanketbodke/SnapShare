@@ -1,24 +1,31 @@
-# README
+# Instagram Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails API-based project that provides endpoints for user authentication, post management, and user interactions such as follow, unfollow, likes, dislikes, saves, and comments.
 
-Things you may want to cover:
+## Setup Instructions
 
-* Ruby version
+To set up the project locally, follow these steps:
 
-* System dependencies
+1. **Clone the Repository**
 
-* Configuration
+   ```bash
+   git clone https://github.com/sanketbodke/instagram_clone.git
+   ```
 
-* Database creation
+   ```bash
+   cd instagram_clone
+   ```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2. **Install Dependencies**
+   ```bash
+   bundle install
+   ```
+3. **Databse Setup**
+   ```bash
+   rails db:create
+   rails db:migrate
+   ```
+4. **Run the Server**
+   ```bash
+   rails server
+   ```
